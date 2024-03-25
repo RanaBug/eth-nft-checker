@@ -39,7 +39,6 @@ const EthereumNFTBalance = () => {
   };
 
   const handleReset = () => {
-    setAddress("");
     setEthBalance(null);
     setNFTBalance(null);
     setNFTData(null);
@@ -128,7 +127,10 @@ const EthereumNFTBalance = () => {
             {isLoading ? null : (
               <p
                 className="text-light-purple underline cursor-pointer ml-6"
-                onClick={() => handleReset()}
+                onClick={() => {
+                  setAddress("");
+                  handleReset();
+                }}
               >
                 Reset
               </p>

@@ -3,7 +3,7 @@ import useContract from "./useContract";
 import nftAbi from "../../abi/nftAbi.json";
 
 export const useNFTContract = () => {
-  const { contract, error: contractError } = useContract({
+  const { contract } = useContract({
     address: "0x2A9bb3fB4FBF8e536b9a6cBEbA33C4CD18369EaF" || "",
     abi: nftAbi,
   });
@@ -12,7 +12,7 @@ export const useNFTContract = () => {
 
   const getBalanceOf = async ({ address }: { address: string }) => {
     try {
-      if (!contract) return contractError;
+      if (!contract) return null;
       const tx = await contract.balanceOf(address);
       return tx;
     } catch (error) {
@@ -23,7 +23,7 @@ export const useNFTContract = () => {
 
   const getImage = async () => {
     try {
-      if (!contract) return contractError;
+      if (!contract) return null;
       const tx = await contract.image();
       return tx;
     } catch (error) {
@@ -34,7 +34,7 @@ export const useNFTContract = () => {
 
   const getMintsPerAddress = async ({ address }: { address: string }) => {
     try {
-      if (!contract) return contractError;
+      if (!contract) return null;
       const tx = await contract.mintsPerAddress(address);
       return tx;
     } catch (error) {
@@ -45,7 +45,7 @@ export const useNFTContract = () => {
 
   const getName = async () => {
     try {
-      if (!contract) return contractError;
+      if (!contract) return null;
       const tx = await contract.name();
       return tx;
     } catch (error) {
@@ -56,7 +56,7 @@ export const useNFTContract = () => {
 
   const getOwner = async () => {
     try {
-      if (!contract) return contractError;
+      if (!contract) return null;
       const tx = await contract.owner();
       return tx;
     } catch (error) {
@@ -67,7 +67,7 @@ export const useNFTContract = () => {
 
   const getTotalSupply = async () => {
     try {
-      if (!contract) return contractError;
+      if (!contract) return null;
       const tx = await contract.totalSupply();
       return tx;
     } catch (error) {
@@ -78,7 +78,7 @@ export const useNFTContract = () => {
 
   return {
     contract,
-    error: contractError || error,
+    error: error,
     getBalanceOf,
     getImage,
     getMintsPerAddress,
