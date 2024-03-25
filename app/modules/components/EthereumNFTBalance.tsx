@@ -15,6 +15,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import { MdWarning } from "react-icons/md";
 import { NFTData } from "../type/type";
 import LoadingData from "./LoadingData";
+import IPFSImage from "./IPFSImage";
 
 const EthereumNFTBalance = () => {
   const [address, setAddress] = useState<string>("");
@@ -157,6 +158,7 @@ const EthereumNFTBalance = () => {
                   <p className="text-lg">
                     Total supply: {nftData.nftTotalSupply}
                   </p>
+                  <IPFSImage cid={nftData.nftImage} />
                 </>
               )}
             </div>
